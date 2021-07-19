@@ -14,9 +14,9 @@ class UpdateUsersTable extends Migration
     public function up()
     {
         Schema::table('comics', function (Blueprint $table) {
-            // $table->string('slug',80)->after('type');
-            // $table->text('description');
-            $table->string('thumb', 250);
+            $table->string('slug', 250)->after('type');
+            $table->text('description')->change();
+            $table->string('thumb', 250)->change();
         });
     }
 
@@ -28,9 +28,9 @@ class UpdateUsersTable extends Migration
     public function down()
     {
         Schema::table('comics', function (Blueprint $table) {
-            // $table->dropColumn('slug');
-            // $table->string('description');
-            $table->string('thumb');
+            $table->dropColumn('slug');
+            // $table->text('description')->change();
+            // $table->string('thumb')->change();
         });
     }
 }

@@ -34,6 +34,7 @@ class ComicsTableSeeder extends Seeder
 
             // lancio il save e popolo la tabella
             $newComic->save();
+            dd($newComic);
         }
     }
 }
