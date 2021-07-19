@@ -19,6 +19,37 @@
                 height: 100vh;
                 margin: 0;
             }
+
+            header,
+            ul {
+                display: flex;
+            }
+            header {
+                background-color: aliceblue;
+                padding: 10px;
+            }
+            header ul li {
+                padding: 0 10px;
+            }
+            .container {
+                width: 75%;
+                margin: auto;
+            }
+            .container table {
+                margin: auto;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid lightblue;
+            }
+            .pagination {
+                justify-content: center;
+                margin-top: 60px;
+            }
+            
+            ul {
+                list-style-type: none;
+            }
         </style>
     </head>
     <body>
