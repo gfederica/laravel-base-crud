@@ -19,7 +19,7 @@
                     <td>{{ $item->series }}</td>
                     <td>{{ $item->price }}</td>
                     <td>
-                        <a href="">SHOW</a>
+                        <a href="{{route('comics.show', $item->id)}}">SHOW</a>
                     </td>
                     <td>EDIT</td>
                     <td>DELETE</td>

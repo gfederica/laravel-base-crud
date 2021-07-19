@@ -15,8 +15,8 @@ class ComicController extends Controller
     public function index()
     {
         // nuova variabile comics dove salvo la collection Comics
-        // $comics = Comic::all();
-        $comics = Comic::paginate(5);
+        
+        $comics = Comic::simplePaginate();
         return view("comics.index", compact('comics'));
     }
 
@@ -49,7 +49,8 @@ class ComicController extends Controller
      */
     public function show($id)
     {
-        //
+        $comics = Comic::find($id);
+        return view("comics.show", compact('comics'));
     }
 
     /**
