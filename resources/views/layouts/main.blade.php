@@ -35,6 +35,10 @@
                 width: 75%;
                 margin: auto;
             }
+            .container-60 {
+                width: 60%;
+                margin: auto;
+            }
             .container table {
                 margin: auto;
             }
@@ -50,6 +54,12 @@
             ul {
                 list-style-type: none;
             }
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
+
         </style>
     </head>
     <body>
