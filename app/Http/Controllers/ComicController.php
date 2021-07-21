@@ -43,7 +43,7 @@ class ComicController extends Controller
             $data = $request->all();
     
            
-            $comic = new Comic();
+            $comics = new Comic();
     
             // 2a: assegnazione valori
             // $beer->brand = $data["brand"];
@@ -59,16 +59,16 @@ class ComicController extends Controller
             $slug = $data["title"] . " " . $data["series"];
             $data["slug"] = Str::slug($slug, '-');
     
-            $comic->fill($data); 
+            $comics->fill($data); 
             // IMPORTANTE: per utilizzare il fill(), serve aggiungere $fillable al Model
     
             // 3: salvataggio istanza
-            $comic->save();
+            $comics->save();
             
             //redirect per evitare di fare più upload, mi reindirizza al fumetto appena aggiunto
             return redirect()
-                ->route('comics.show', $comic->id)
-                ->with('message', "Il prodotto " . $comic->title . " è stato caricato");
+                ->route('comics.show', $comics->id)
+                ->with('message', "Il prodotto " . $comics->title . " è stato caricato");
                 //with si collega a @sessions nella route di destinazione
         }
     }
@@ -91,9 +91,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comics)
     {
-        //
+        return view("comics.edit", compact('comics'));
     }
 
     /**
@@ -103,9 +103,18 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comics)
     {
-        //
+        $data = $request->all();
+
+        $slug = $data["title"] . " " . $data["series"];
+        $data["slug"] = Str::slug($slug, '-');        
+        $comics->update($data); 
+        // ricordarsi di aggiungere il $fillable al Model
+        
+        return redirect()
+            ->route('comics.show', $comics->id)
+            ->with('message', "Il prodotto " . $comics->title . " è stato modificato");
     }
 
     /**
