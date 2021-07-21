@@ -24,12 +24,21 @@
                     <td>
                         <a href="{{route('comics.edit', [$item->id])}}">EDIT</a>
                     </td>
-                    <td>DELETE</td>
+                    <td>
+                        <form 
+                            action="{{ route('comics.destroy', $item->id) }}" 
+                            method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="DELETE">
+                        </form>
+                    </td>
                 </tr> 
             @endforeach
         </tbody>
     </table>
 
     {{ $comics->links() }}
+
 </div>
 @endsection

@@ -17,7 +17,7 @@ class ComicController extends Controller
     {
         // nuova variabile comics dove salvo la collection Comics
         
-        $comics = Comic::simplePaginate();
+        $comics = Comic::Paginate(5);
         return view("comics.index", compact('comics'));
     }
 
@@ -123,8 +123,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route("comics.index");
     }
 }
