@@ -91,9 +91,9 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comic $comics)
+    public function edit(Comic $comic)
     {
-        return view("comics.edit", compact('comics'));
+        return view("comics.edit", compact('comic'));
     }
 
     /**
@@ -103,18 +103,18 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comics)
+    public function update(Request $request, Comic $comic)
     {
         $data = $request->all();
 
         $slug = $data["title"] . " " . $data["series"];
         $data["slug"] = Str::slug($slug, '-');        
-        $comics->update($data); 
+        $comic->update($data); 
         // ricordarsi di aggiungere il $fillable al Model
         
         return redirect()
-            ->route('comics.show', $comics->id)
-            ->with('message', "Il prodotto " . $comics->title . " è stato modificato");
+            ->route('comics.show', $comic->id)
+            ->with('message', "Il prodotto " . $comic->title . " è stato modificato");
     }
 
     /**

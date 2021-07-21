@@ -22,7 +22,7 @@
                         <a href="{{route('comics.show', $item->id)}}">SHOW</a>
                     </td>
                     <td>
-                        <a href="{{route('comics.edit', $item->id)}}">EDIT</a>
+                        <a href="{{route('comics.edit', [$item->id])}}">EDIT</a>
                     </td>
                     <td>DELETE</td>
                 </tr> 
