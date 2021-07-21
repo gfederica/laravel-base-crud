@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="sale_date">Data messa in commercio</label>
-                <input type="text" class="form-control" id="sale_date" placeholder="Inserisci la data di messa in vendita" name="sale_date">
+                <input type="text" class="form-control" id="sale_date" placeholder="Formato data YYYY-MM-DD" name="sale_date">
             </div>
             <div class="form-group">
                 <label for="type">Tipo prodotto</label>

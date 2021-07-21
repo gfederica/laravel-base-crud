@@ -1,6 +1,13 @@
 @extends('layouts.main')
 
 @section('content')
+
+@if (session('message'))
+        <div>
+            {{ session('message') }}
+        </div>
+@endif
+
 <div class="container">
     <h2>{{ $comics->title }}</h2>
 

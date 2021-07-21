@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comic;
+use Illuminate\Support\Str;
 
 class ComicController extends Controller
 {
@@ -38,7 +39,38 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     { 
-        //
+        {
+            $data = $request->all();
+    
+           
+            $comic = new Comic();
+    
+            // 2a: assegnazione valori
+            // $beer->brand = $data["brand"];
+            // $beer->name = $data["name"];
+            // $beer->alcohol = $data["alcohol"];
+            // $beer->price = $data["price"];
+            // $beer->img = $data["img"];
+            // $beer->description = $data["description"];
+            // $slug = $data["brand"] . " " . $data["name"];
+            // $beer->slug = Str::slug($slug, '-');
+    
+            // 2b: Mass assignment, slug si aggiunge a parte perché non viene inserito manualmente
+            $slug = $data["title"] . " " . $data["series"];
+            $data["slug"] = Str::slug($slug, '-');
+    
+            $comic->fill($data); 
+            // IMPORTANTE: per utilizzare il fill(), serve aggiungere $fillable al Model
+    
+            // 3: salvataggio istanza
+            $comic->save();
+            
+            //redirect per evitare di fare più upload, mi reindirizza al fumetto appena aggiunto
+            return redirect()
+                ->route('comics.show', $comic->id)
+                ->with('message', "Il prodotto " . $comic->title . " è stato caricato");
+                //with si collega a @sessions nella route di destinazione
+        }
     }
 
     /**
